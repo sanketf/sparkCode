@@ -11,7 +11,7 @@ def parseLine(line):
 conf = SparkConf().setMaster("local").setAppName("RatingsHistogram")
 sc = SparkContext(conf=conf)
 
-lines = sc.textFile("file:///sparkCourse/data/fakefriends.csv")
+lines = sc.textFile("file:///sparkCodes/data/fakefriends.csv")
 rdd = lines.map(parseLine)
 
 totalByAge = rdd.mapValues(lambda x: (x, 1)).reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1]))
